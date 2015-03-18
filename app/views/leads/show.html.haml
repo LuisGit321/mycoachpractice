@@ -1,0 +1,24 @@
+.row
+  .span12
+    = render "users/navbar"
+    .page-header
+      %h1 Lead details
+    .span6.offset3
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Lead Id:
+            %th= @lead.id
+        %tbody
+          %tr
+            %td{style: "font-weight:bold;"} Coachee name:
+            %td= @lead.coachee_name
+          %tr
+            %td{style: "font-weight:bold;"} Coachee issue:
+            %td= @lead.coachee_presenting_issue
+      .clearfix
+        .well
+          = link_to "Back", :back, class: "btn btn-tiny"
+          = link_to "Send proposal", new_lead_proposal_path(@lead), class: "btn btn-success"
+
+

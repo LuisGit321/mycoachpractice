@@ -1,0 +1,14 @@
+%h3 Program details
+%p.divider
+
+%table.table.table-condensed.table-hover.table-stripped
+  %tbody
+    %tr
+      %td Persisted:
+      %td= program.present? ? "Yes" : "No"
+    %tr
+      %td Number of sessions
+      %td= program.number_of_sessions
+    %tr
+      %td Session duration
+      %td= program.session_duration

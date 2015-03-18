@@ -1,0 +1,17 @@
+.page-header
+  %h1= "Hi #{@provider.name}!"
+.span9.offset3
+  %p= "Please confirm a person with following credentials is a student of #{@student.training_program.name} training course:"
+  %table.table.table-bordered
+    %tr
+      %td First Name
+      %td= @student.first_name
+    %tr
+      %td Last Name
+      %td= @student.last_name
+    %tr
+      %td Course name
+      %td= @student.training_program.name
+  %p
+    Please compare this information with your records and if the info is correct please follow this
+    = link_to "link to confirm.", provider_confirmation_url(@student.provider_confirmation_token)

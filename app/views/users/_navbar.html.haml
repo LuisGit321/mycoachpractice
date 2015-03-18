@@ -1,0 +1,8 @@
+.row
+  .span6.offset4.clearfix
+    %ul.nav.nav-pills
+      %li.active= link_to "Home", user_path(current_user)
+      %li= link_to "Leads", leads_path
+      %li= link_to "Proposals", proposals_path
+      %li= link_to "Payments"
+      %li= link_to "Training", "#"

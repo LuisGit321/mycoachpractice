@@ -1,0 +1,17 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  mongoid:
+    errors:
+      models:
+        user:
+          attributes:
+            profile_type_id:
+              presence: "Profile type can't be blank"
+            first_name:
+              presence: "First name can't be blank"
+            last_name:
+              presence: "Last name can't be blank"
+            password:
+              presence: "Password can't be blank"

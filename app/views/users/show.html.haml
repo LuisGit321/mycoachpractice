@@ -1,0 +1,48 @@
+.row
+  .span12
+    = render "navbar"
+    .page-header
+      %h1 My profile(s)
+
+    .span4{ style: "padding: 10px;"}
+      %h3= current_user.full_name
+      = image_tag "http://placehold.it/140x140", class: "img-rounded"
+    .span5.pull-right.offset2{ style: "border: 1px solid #ddd; padding: 20px;"}
+      %h3 Registration details
+      %small= link_to "Edit registration details", edit_user_registration_path
+      %p.divider
+      %table.table-condensed.table-hover.table-stripped
+        %tbody
+          %tr
+            %td{ style: "font-weight:bold;" } Membership type:
+            %td
+              = current_user.profile_type.name
+              - if current_user.is_icf_member?
+                = " (ICF member id: #{current_user.icf_member_number})"
+          - if current_user.is_student?
+            %tr{style: "color:#333;"}
+              %td Training program:
+              %td= current_user.training_program.name
+            %tr{style: "color:#333;"}
+              %td Graduation date:
+              %td= current_user.graduation_date.strftime("%b %d, %Y")
+            %tr
+              %td Provider confirmation:
+              %td= current_user.provider_confirmed? ? "Confirmed" : "Pending"
+          %tr
+            %td First name:
+            %td= current_user.first_name
+          %tr
+            %td Last name:o
+            %td= current_user.last_name
+          %tr
+            %td Email:
+            %td= current_user.email
+
+.row{ style: "margin-top:20px;"}
+  .span12
+    .page-header
+      %h3 You have no profiles configured
+    %a{ href: "#", class: "btn btn-success btn-large" }
+      %i.icon-plus.icon-white
+      Create profile

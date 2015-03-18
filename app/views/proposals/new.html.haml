@@ -1,0 +1,24 @@
+.row
+  .span12
+
+    = simple_form_for @proposal, html: { class: "form-horizontal", novalidate: true } do |f|
+      %legend
+        = "Create new proposal for #{@lead.coachee_name}"
+        %small= link_to "review lead details", "#"
+
+      = f.input :lead_id, as: :hidden, input_html: { value: @lead.id }
+      = f.simple_fields_for :template do |tmp|
+        = tmp.input :export_format, collection: ["pdf"]
+        = tmp.input :drive_id, as: :hidden, value: "12sIkgALHstfKOu_1XUbFfy5lNnrtdmL_zUYnhh0gPdY"
+
+      = f.simple_fields_for :program do |p|
+        = p.input :start_from_date
+        = p.input :end_date
+        = p.input :coaching_media
+        = p.input :after_hours_availability
+        = p.input :number_of_sessions
+        = p.input :session_duration
+        = p.input :mediation_period
+
+      .form-actions
+        = f.submit "Create!", class: "btn btn-success"

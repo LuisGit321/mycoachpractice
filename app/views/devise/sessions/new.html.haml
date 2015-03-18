@@ -1,0 +1,22 @@
+.page-header
+  %h1 Welcome to MyCoachPractice
+
+.row
+  .span12
+    .span6
+      = simple_form_for resource, url: session_path(resource_name), html: { autocomplete: false, class: "form-horizontal"  } do |f|
+        %legend Sign in
+        = f.input :email, as: :email, placeholder: "Email"
+        = f.input :password, as: :password, placeholder: "Password"
+        = f.input :remember_me, as: :boolean
+        .form-actions
+          = f.submit "Sign in", class: "btn btn-success"
+    .span5{style: "padding-top:50px;padding-right:50px;"}
+      .pull-right.well
+        <h3>Dont have an account?</h3>
+        %p.divider
+        %p
+          = link_to "Sign up!", new_user_registration_path, class: "btn btn-primary"
+        %p
+          See
+          = link_to "plans and pricing", "#"

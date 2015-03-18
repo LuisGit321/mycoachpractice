@@ -1,0 +1,36 @@
+.row
+  .span12
+    = render "users/navbar"
+    .page-header
+      %h1 Preview proposal
+
+    .span5
+      %table.table.table-hover
+        %h3 Proposal meta
+        %tbody
+          %tr
+            %td Created by:
+            %td= @proposal.created_by_id == current_user.id ? "You" : @proposal.coach.full_name
+          %tr
+            %td Created for:
+            %td= @proposal.lead.coachee_name
+          %tr
+            %td Issue
+            %td= @proposal.lead.coachee_presenting_issue
+          %tr
+            %td Created:
+            %td= @proposal.created_at.present? ? strftime("on %m/%d/%Y at %I:%M%p") : "Date and Time"
+          %tr
+            %td Content:
+            %td= @proposal.doc_content
+    .span4.pull-right.offset2{ style: "border:1px solid #ddd; padding:20px;" }
+      = render partial: "proposals/program", locals: { program: @proposal.program }
+      = render partial: "proposals/template", locals: { template: @proposal.template }
+.row{ style: "margin-top: 20px;"}
+  .span5
+    .well
+      - unless @proposal.sent_at.nil?
+        = link_to "Proposal sent #{@proposal.sent_at.strftime("on %m/%d/%Y at %I:%M%p")}.", "#", class: "btn", disabled: "disabled"
+      -else
+        = link_to "Send proposal", '#', class: "btn btn-success"
+        = link_to "Preview resulting document", resulting_document_link(@proposal), class: "btn"
